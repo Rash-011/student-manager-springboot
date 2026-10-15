@@ -1,0 +1,325 @@
+/* ===================================================
+   Student Registration System – Stylesheet
+   Matches: purple header, sage-green bg, white cards
+   =================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:           #c8d5c0;   /* sage-green page background */
+  --surface:      #ffffff;   /* white card */
+  --header-bg:    #3b1a6e;   /* deep purple header */
+  --header-sub:   #c9b8e8;   /* light purple subtitle */
+  --accent:       #4a1f8c;   /* purple button */
+  --accent-h:     #5a2da8;
+  --danger:       #e53935;   /* red delete button */
+  --danger-h:     #c62828;
+  --edit-bg:      #f0f0f0;
+  --edit-border:  #bbb;
+  --success-bg:   #e8f5e0;
+  --success-text: #3a7d2c;
+  --success-border:#a5d68a;
+  --input-bg:     #dce6d8;   /* muted sage input background */
+  --input-border: #b8cbb0;
+  --text:         #1a1a2e;
+  --text-muted:   #555;
+  --label:        #333;
+  --table-head:   #1e1e1e;
+  --table-head-t: #ffffff;
+  --table-row:    #ffffff;
+  --table-alt:    #f7f7f7;
+  --border:       #d0dac8;
+  --radius:       10px;
+  --shadow:       0 2px 12px rgba(0,0,0,.10);
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Top Bar ---------- */
+.topbar {
+  background: var(--header-bg);
+  padding: 1.5rem 2rem 1.2rem;
+  text-align: center;
+  border-bottom: 4px solid #2a1050;
+}
+
+.topbar h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: .3px;
+}
+
+.topbar p {
+  color: var(--header-sub);
+  font-size: .85rem;
+  font-weight: 400;
+  margin-top: .25rem;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: 860px;
+  margin: 1.75rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.container.narrow {
+  max-width: 600px;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--shadow);
+}
+
+.card h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+/* ---------- Badge ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 .45rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+/* ---------- Form Fields ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  margin-bottom: .95rem;
+}
+
+label {
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--label);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  color: var(--text);
+  padding: .6rem .85rem;
+  font-size: .93rem;
+  font-family: inherit;
+  width: 100%;
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(74,31,140,.15);
+  background: #d5e2d0;
+}
+
+input::placeholder {
+  color: #89a080;
+}
+
+select option {
+  background: #fff;
+}
+
+small.error {
+  color: var(--danger);
+  font-size: .77rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  padding: .5rem 1.1rem;
+  border-radius: 6px;
+  border: 1px solid var(--edit-border);
+  background: var(--edit-bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: .85rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .15s, border-color .15s, box-shadow .15s;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: #e0e0e0;
+}
+
+.btn:active { opacity: .85; }
+
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  padding: .6rem 1.4rem;
+  margin-top: .35rem;
+}
+
+.btn.primary:hover {
+  background: var(--accent-h);
+  border-color: var(--accent-h);
+}
+
+.btn.danger {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn.danger:hover {
+  background: var(--danger-h);
+  border-color: var(--danger-h);
+}
+
+.btn.small {
+  padding: .28rem .7rem;
+  font-size: .8rem;
+}
+
+/* ---------- Table ---------- */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+}
+
+thead tr {
+  background: var(--table-head);
+}
+
+thead th {
+  padding: .72rem 1rem;
+  text-align: left;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--table-head-t);
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e8e8e8;
+  transition: background .12s;
+}
+
+tbody tr:last-child { border-bottom: none; }
+
+tbody tr:nth-child(even) { background: var(--table-alt); }
+
+tbody tr:hover { background: #eef3eb; }
+
+tbody td {
+  padding: .7rem 1rem;
+  color: var(--text);
+  vertical-align: middle;
+}
+
+td.empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2rem;
+  font-style: italic;
+}
+
+td.actions {
+  display: flex;
+  gap: .45rem;
+  align-items: center;
+}
+
+/* ---------- Alerts ---------- */
+.alert {
+  padding: .75rem 1rem;
+  border-radius: 7px;
+  font-size: .88rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+
+.alert.success {
+  background: var(--success-bg);
+  border-color: var(--success-border);
+  color: var(--success-text);
+}
+
+.alert.danger {
+  background: #fdecea;
+  border-color: #f5aea8;
+  color: var(--danger);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  padding: 1.25rem;
+  font-size: .8rem;
+  color: #666;
+  margin-top: auto;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .topbar h1 { font-size: 1.4rem; }
+  .card { padding: 1.2rem; }
+  .container { padding: 0 .75rem; }
+}
